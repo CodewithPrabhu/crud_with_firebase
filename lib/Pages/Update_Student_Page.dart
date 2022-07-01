@@ -11,21 +11,18 @@ class UpdateStudentPage extends StatefulWidget {
 
 class _UpdateStudentPageState extends State<UpdateStudentPage> {
   final _formKey = GlobalKey<FormState>();
- var student = '';
- updateUser(){
-   return 'updated';
- }
+
   // Updaing Student
-  // CollectionReference students =
-  // FirebaseFirestore.instance.collection('students');
-  //
-  // Future<void> updateUser(id, name, email, password) {
-  //   return students
-  //       .doc(id)
-  //       .update({'name': name, 'email': email, 'password': password})
-  //       .then((value) => print("User Updated"))
-  //       .catchError((error) => print("Failed to update user: $error"));
-  // }
+  CollectionReference students =
+  FirebaseFirestore.instance.collection('students');
+
+  Future<void> updateUser(id, name, email, password) {
+    return students
+        .doc(id)
+        .update({'name': name, 'email': email, 'password': password})
+        .then((value) => print("User Updated"))
+        .catchError((error) => print("Failed to update user: $error"));
+  }
 
   @override
   Widget build(BuildContext context) {
